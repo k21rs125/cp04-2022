@@ -159,7 +159,7 @@
     // ボタンの初期設定
     function init(){
         $('#btnA').prop('disabled', false);
-        $('#btnB').prop('disabled', false);
+        $('#btnB').prop('disabled', true);
         $('#btnC').prop('disabled', false);
         
     }
@@ -184,12 +184,14 @@
         active = true;
         startTime = new Date();
         $("#btnA").prop("disabled", true);
+        $("#btnB").prop("disabled", false);
 
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
+        $("#btnB").prop("disabled", true);
         $("#btnA").prop("disabled", false);
     }
 
@@ -201,6 +203,7 @@
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
         $("#btnA").prop("disabled", false);
+        $("#btnB").prop("disabled", true);
     }
     
  
