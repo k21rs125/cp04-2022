@@ -153,6 +153,7 @@
     var active = false;
     var startTime = 0;
     var period = 0;
+    var stop = false;
 
 
     
@@ -182,14 +183,18 @@
     // ButtonAがクリックされた時の処理
     function btnAClick(e){
         active = true;
-        startTime = new Date();
+        if(stop == false){
+            startTime = new Date();
+        }
         $("#btnA").prop("disabled", true);
         $("#btnB").prop("disabled", false);
+        stop = false;
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
+        stop = true;
         $("#btnB").prop("disabled", true);
         $("#btnA").prop("disabled", false);
     }
@@ -198,6 +203,7 @@
     function btnCClick(e){
         alarm();
         active = false;
+        stop = false;
         period = 60* parseInt($("#minute").val()) + parseInt($("#second").val());
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
